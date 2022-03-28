@@ -7,18 +7,14 @@
 
 import SwiftUI
 
-let names = ["Lauren", "Brian", "Penny", "Brontë"];
-
 struct ContentView: View {
+    @State var currentCount: Int = 0
+
     var body: some View {
-        List {
-            ForEach(names, id: \.self) { name in
-                Text("Welcome \n\(name)!!")
-                    .foregroundColor(Color.purple)
-                    .padding(15)
-                    .border(Color.red, width: 5)
-                    .padding(25);
-            }
+        Text(String(self.currentCount)).foregroundColor(.blue).font(.system(size: 100)).onTapGesture {
+            currentCount += 1
+        }.onLongPressGesture {
+            currentCount = 0
         }
     }
 }
